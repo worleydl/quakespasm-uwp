@@ -53,6 +53,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #define DEFAULT_REFRESHRATE	60
 
+// UWP locked to display res for now
+extern __declspec(dllimport) void uwp_GetScreenSize(int*, int*);
+
 typedef struct {
 	int			width;
 	int			height;
@@ -584,6 +587,8 @@ static qboolean VID_SetMode (int width, int height, int refreshrate, int bpp, qb
 #if defined(USE_SDL2)
 	int		previous_display;
 #endif
+
+	uwp_GetScreenSize(&width, &height); // Override to screen res for now
 
 	// so Con_Printfs don't mess us up by forcing vid and snd updates
 	temp = scr_disabled_for_loading;

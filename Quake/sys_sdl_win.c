@@ -226,7 +226,7 @@ void Sys_Init (void)
 
 	memset (cwd, 0, sizeof(cwd));
 	Sys_GetBasedir(NULL, cwd, sizeof(cwd));
-	host_parms->basedir = cwd;
+	host_parms->basedir = "E:\\quake"; // cwd;
 
 	/* userdirs not really necessary for windows guys.
 	 * can be done if necessary, though... */
